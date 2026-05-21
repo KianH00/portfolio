@@ -17,10 +17,10 @@ function Hero() {
 
         {/* Buttons */}
         <div className="mt-6 flex gap-4 justify-center md:justify-start">
-          <a className="px-5 py-2 rounded-lg bg-black text-white hover:opacity-80 transition">
+          <a href="#projects" className="px-5 py-2 rounded-lg bg-black text-white hover:opacity-80 transition">
             View Projects
           </a>
-          <a className="px-5 py-2 rounded-lg border border-gray-300 hover:border-black transition">
+          <a href="#contact" className="px-5 py-2 rounded-lg border border-gray-300 hover:border-black transition">
             Contact Me
           </a>
         </div>
