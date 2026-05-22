@@ -112,3 +112,34 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+.parallax-hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-image: url("/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* overlay so text matches your theme */
+.parallax-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+
+.parallax-hero > * {
+  position: relative;
+  z-index: 1;
+}
+html {
+  scroll-behavior: smooth;
+}
