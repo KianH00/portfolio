@@ -2,31 +2,47 @@ import { useEffect, useState } from "react";
 
 function Hero() {
   const [offset, setOffset] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreen = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkScreen();
+
+    window.addEventListener("resize", checkScreen);
+
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setOffset(window.scrollY);
+
     window.addEventListener("scroll", handleScroll);
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToContact = () => {
     document.getElementById("contact")?.scrollIntoView({
-      behavior: "smooth"
+      behavior: "smooth",
     });
   };
 
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center px-6"
+      className="relative min-h-screen w-full bg-slate-900 flex items-center justify-center px-6"
     >
-
       <div className="max-w-6xl w-full flex flex-col md:flex-row items-center justify-between gap-12">
-
+        
         {/* TEXT */}
         <div
           style={{
-            transform: `translateY(${offset * 0.15}px)`
+            transform: isMobile
+              ? "none"
+              : `translate3d(0, ${offset * 0.15}px, 0)`,
           }}
           className="text-center md:text-left transition-transform duration-300"
         >
@@ -39,7 +55,8 @@ function Hero() {
           </h2>
 
           <p className="mt-4 text-gray-400 max-w-md">
-            I build responsive, clean, and user-friendly web applications using React and modern frontend tools.
+            I build responsive, clean, and user-friendly web applications using
+            React and modern frontend tools.
           </p>
 
           <div className="mt-6 flex gap-4 justify-center md:justify-start">
@@ -62,15 +79,17 @@ function Hero() {
         {/* IMAGE */}
         <div
           style={{
-            transform: `translateY(${offset * -0.1}px)`
+            transform: isMobile
+              ? "none"
+              : `translate3d(0, ${offset * -0.1}px, 0)`,
           }}
           className="flex justify-center transition-transform duration-300"
         >
           <div className="w-52 h-52 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-gray-700 shadow-lg">
             <img
               src="/your-photo.jpg"
-              className="w-full h-full object-cover"
               alt="Profile"
+              className="w-full h-full object-cover"
             />
           </div>
         </div>
