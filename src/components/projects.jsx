@@ -10,41 +10,37 @@ function Projects() {
         "A frontend hotel reservation system with login simulation, booking UI, and responsive design.",
       tools: ["HTML", "CSS", "JavaScript"],
       live: "https://hotelbooking-8d8y.vercel.app",
-      github: "https://github.com/KianH00/hotelbooking"
+      type: "Web Application"
     },
 
     {
       id: 2,
-      title: "Portfolio Website",
+      title: "Student Expense Tracker",
       description:
-        "A personal portfolio built with React and Tailwind showcasing my projects and skills.",
+        "A simple expense tracking web application that helps students manage daily expenses and monitor their spending habits efficiently.",
       tools: ["React", "Tailwind", "Vite"],
-      live: "#",
-      github: "#"
+      live: "https://studentexpense-beige.vercel.app/",
+      type: "Web Application"
     },
 
     {
       id: 3,
-      title: "IoT Flood Monitoring System",
+      title:
+        "Non-Contact Overloading Detection System",
       description:
         "An undergraduate thesis project using Raspberry Pi and IoT sensors to monitor environmental conditions and send real-time mobile alerts. The system was designed to improve early warning and remote monitoring capabilities through hardware and software integration.",
 
       tools: [
-        "Raspberry Pi",
+        "Raspberry Pi 4",
         "Python",
         "Firebase",
-        "Android Studio",
-        "IoT",
+        "Expo",
         "Sensors"
       ],
 
-      // PLACE PDF INSIDE:
-      // public/thesis.pdf
-      live: "/thesis.pdf",
-
-      github: "#",
-
-      type: "Hardware Thesis"
+      live: "#", // used for SHOW
+      documentation: "/Ncontact.pdf",
+      type: "Hardware and Mobile Application Thesis"
     }
   ];
 
@@ -55,11 +51,8 @@ function Projects() {
       id="projects"
       className="max-w-6xl mx-auto px-6 py-16 text-white"
     >
-      <h2 className="text-3xl font-bold mb-8">
-        Projects
-      </h2>
+      <h2 className="text-3xl font-bold mb-8">Projects</h2>
 
-      {/* MOBILE STACK | DESKTOP GRID */}
       <div className="flex flex-col md:grid md:grid-cols-3 gap-6">
 
         {/* LEFT SIDE */}
@@ -86,14 +79,12 @@ function Projects() {
               )}
             </button>
           ))}
-
         </div>
 
         {/* RIGHT SIDE */}
         <div className="md:col-span-2 bg-slate-800 border border-slate-700 rounded-2xl p-6 md:p-8 min-h-[320px]">
 
           <AnimatePresence mode="wait">
-
             <motion.div
               key={selected.id}
               initial={{ opacity: 0, y: 15 }}
@@ -121,7 +112,6 @@ function Projects() {
 
               {/* TOOLS */}
               <div className="flex flex-wrap gap-2 mt-6">
-
                 {selected.tools.map((tool, i) => (
                   <span
                     key={i}
@@ -130,12 +120,12 @@ function Projects() {
                     {tool}
                   </span>
                 ))}
-
               </div>
 
               {/* BUTTONS */}
               <div className="flex flex-col sm:flex-row gap-3 mt-8">
 
+                {/* PROJECT 3 */}
                 {selected.id === 3 ? (
                   <>
                     <a
@@ -144,11 +134,11 @@ function Projects() {
                       rel="noopener noreferrer"
                       className="px-5 py-2.5 bg-white text-black rounded-xl hover:opacity-80 transition text-center font-medium"
                     >
-                      View Thesis PDF
+                      Show
                     </a>
 
                     <a
-                      href={selected.github}
+                      href={selected.documentation}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="px-5 py-2.5 border border-slate-600 rounded-xl hover:bg-slate-700 transition text-center"
@@ -157,7 +147,9 @@ function Projects() {
                     </a>
                   </>
                 ) : (
-                  <>
+                  /* OTHER PROJECTS */
+                  selected.live &&
+                  selected.live !== "#" && (
                     <a
                       href={selected.live}
                       target="_blank"
@@ -166,26 +158,15 @@ function Projects() {
                     >
                       Live Demo
                     </a>
-
-                    <a
-                      href={selected.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-5 py-2.5 border border-slate-600 rounded-xl hover:bg-slate-700 transition text-center"
-                    >
-                      GitHub
-                    </a>
-                  </>
+                  )
                 )}
 
               </div>
 
             </motion.div>
-
           </AnimatePresence>
 
         </div>
-
       </div>
     </section>
   );
