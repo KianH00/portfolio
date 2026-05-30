@@ -2,6 +2,7 @@ import { useState } from "react";
 
 function Certificates() {
   const [selectedCert, setSelectedCert] = useState(null);
+  const [isVerticalFix, setIsVerticalFix] = useState(false);
 
   return (
     <section id="certificates" className="max-w-5xl mx-auto px-6 py-16">
@@ -16,38 +17,60 @@ function Certificates() {
         <CertificateCard
           title="Introduction to Cybersecurity"
           issuer="Cisco Networking Academy"
-          onView={() => setSelectedCert("/cyber.jpg")}
+          onView={() => {
+            setSelectedCert("/cyber.jpg");
+            setIsVerticalFix(false);
+          }}
         />
 
         <CertificateCard
           title="Fundamentals of Digital Marketing"
           issuer="Google Skillshop"
-          onView={() => setSelectedCert("/digmarket.jpg")}
+          onView={() => {
+            setSelectedCert("/digmarket.jpg");
+            setIsVerticalFix(true); // ✅ ONLY this one is fixed
+          }}
         />
 
         <CertificateCard
           title="SEO Fundamentals"
           issuer="HubSpot Academy"
-          onView={() => setSelectedCert("/seo.png")}
+          onView={() => {
+            setSelectedCert("/seo.png");
+            setIsVerticalFix(false);
+          }}
         />
 
       </div>
 
-      {/* MODAL (MOBILE FRIENDLY) */}
+      {/* MODAL */}
       {selectedCert && (
         <div
           className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 px-4"
-          onClick={() => setSelectedCert(null)}
+          onClick={() => {
+            setSelectedCert(null);
+            setIsVerticalFix(false);
+          }}
         >
           <div
-            className="w-full max-w-3xl max-h-[85vh] bg-white rounded-xl overflow-hidden shadow-xl"
+            className="w-full max-w-3xl bg-white rounded-xl overflow-hidden shadow-xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <img
-              src={selectedCert}
-              alt="Certificate"
-              className="w-full h-full object-contain"
-            />
+            {isVerticalFix ? (
+              <div className="p-2 flex items-center justify-center bg-white">
+                <img
+                  src={selectedCert}
+                  alt="Certificate"
+                  className="max-h-[80vh] w-auto object-contain"
+                />
+              </div>
+            ) : (
+              <img
+                src={selectedCert}
+                alt="Certificate"
+                className="w-full h-full object-contain"
+              />
+            )}
           </div>
         </div>
       )}

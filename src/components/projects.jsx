@@ -10,6 +10,7 @@ function Projects() {
         "A frontend hotel reservation system with login simulation, booking UI, and responsive design.",
       tools: ["HTML", "CSS", "JavaScript"],
       live: "https://hotelbooking-8d8y.vercel.app",
+      github: "https://github.com/KianH00/hotelbooking",
       type: "Web Application"
     },
 
@@ -20,28 +21,19 @@ function Projects() {
         "A simple expense tracking web application that helps students manage daily expenses and monitor their spending habits efficiently.",
       tools: ["React", "Tailwind", "Vite"],
       live: "https://studentexpense-beige.vercel.app/",
+      github: "https://github.com/KianH00/studentexpense",
       type: "Web Application"
     },
 
     {
       id: 3,
-      title:
-        "Non-Contact Overloading Detection System",
+      title: "Non-Contact Overloading Detection System",
       description:
         "An undergraduate thesis project using Raspberry Pi and IoT sensors to monitor environmental conditions and send real-time mobile alerts. The system was designed to improve early warning and remote monitoring capabilities through hardware and software integration.",
-
-      tools: [
-        "Raspberry Pi 4",
-        "Python",
-        "Firebase",
-        "Expo",
-        "Sensors"
-      ],
-
-      live: "#", // used for SHOW
+      tools: ["Raspberry Pi 4", "Python", "Firebase", "Expo", "Sensors"],
       documentation: "/Ncontact.pdf",
       type: "Hardware and Mobile Application Thesis"
-    }
+}
   ];
 
   const [selected, setSelected] = useState(projects[0]);
@@ -57,7 +49,6 @@ function Projects() {
 
         {/* LEFT SIDE */}
         <div className="flex md:flex-col gap-3 overflow-x-auto md:overflow-visible pb-2">
-
           {projects.map((project) => (
             <button
               key={project.id}
@@ -125,7 +116,7 @@ function Projects() {
               {/* BUTTONS */}
               <div className="flex flex-col sm:flex-row gap-3 mt-8">
 
-                {/* PROJECT 3 */}
+                {/* PROJECT 3 SPECIAL */}
                 {selected.id === 3 ? (
                   <>
                     <a
@@ -145,20 +136,42 @@ function Projects() {
                     >
                       Documentation
                     </a>
-                  </>
-                ) : (
-                  /* OTHER PROJECTS */
-                  selected.live &&
-                  selected.live !== "#" && (
+
                     <a
-                      href={selected.live}
+                      href={selected.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-5 py-2.5 bg-white text-black rounded-xl hover:opacity-80 transition text-center font-medium"
+                      className="px-5 py-2.5 border border-slate-600 rounded-xl hover:bg-slate-700 transition text-center"
                     >
-                      Live Demo
+                      GitHub
                     </a>
-                  )
+                  </>
+                ) : (
+                  <>
+                    {/* LIVE DEMO */}
+                    {selected.live && selected.live !== "#" && (
+                      <a
+                        href={selected.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-5 py-2.5 bg-white text-black rounded-xl hover:opacity-80 transition text-center font-medium"
+                      >
+                        Live Demo
+                      </a>
+                    )}
+
+                    {/* GITHUB */}
+                    {selected.github && (
+                      <a
+                        href={selected.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-5 py-2.5 border border-slate-600 rounded-xl hover:bg-slate-700 transition text-center"
+                      >
+                        GitHub
+                      </a>
+                    )}
+                  </>
                 )}
 
               </div>

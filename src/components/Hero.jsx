@@ -55,8 +55,8 @@ function Hero() {
           </h2>
 
           <p className="mt-4 text-gray-400 max-w-md">
-            I build responsive, clean, and user-friendly web applications using
-            React and modern frontend tools.
+            I create responsive and user-friendly web applications
+            using React, focusing on clean design, performance, and usability.
           </p>
 
           <div className="mt-6 flex gap-4 justify-center md:justify-start">
@@ -87,8 +87,7 @@ function Hero() {
         >
           <div className="w-52 h-52 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-gray-700 shadow-lg">
             <img
-              src="/your-photo.jpg"
-              alt="Profile"
+              src="/kiks.jpg"
               className="w-full h-full object-cover"
             />
           </div>

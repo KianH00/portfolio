@@ -4,6 +4,7 @@ import About from "./components/about";
 import Certificates from "./components/certificates";
 import Projects from "./components/projects";
 import Contact from "./components/contact";
+import Footer from "./components/footer";
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
         <Certificates />
         <Projects />
         <Contact />
+
+        <Footer />
       </main>
     </div>
   );

@@ -27,7 +27,7 @@ export default function Contact() {
   };
 
   return (
-    <section className="max-w-xl mx-auto p-6">
+    <section id="contact" className="max-w-xl mx-auto p-6">
       <h2 className="text-2xl font-bold mb-4">Contact Me</h2>
 
       <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-4">
@@ -56,11 +56,23 @@ export default function Contact() {
 
         <button
           type="submit"
-          className="bg-blue-600 text-white p-2 rounded"
+          className="bg-blue-600 text-white p-2 rounded hover:opacity-90 transition"
         >
           Send Message
         </button>
       </form>
+
+      {/* RESUME BUTTON */}
+      <div className="mt-6 flex justify-center">
+        <a
+          href="/Helliefresh.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-5 py-2.5 border border-slate-600 rounded-xl hover:bg-slate-700 transition text-center text-white"
+        >
+          Download Resume
+        </a>
+      </div>
     </section>
   );
 }
