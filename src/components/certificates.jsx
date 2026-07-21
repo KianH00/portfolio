@@ -28,7 +28,7 @@ function Certificates() {
           issuer="Google Skillshop"
           onView={() => {
             setSelectedCert("/digmarket.jpg");
-            setIsVerticalFix(true); // ✅ ONLY this one is fixed
+            setIsVerticalFix(true);
           }}
         />
 
