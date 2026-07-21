@@ -7,36 +7,43 @@ function Projects() {
       id: 1,
       title: "Hotel Booking Website",
       description:
-        "A frontend hotel reservation system with login simulation, booking UI, and responsive design.",
+        "A responsive hotel booking web application featuring a simulated user authentication system, room reservation workflow, and an intuitive booking interface. Built to demonstrate modern frontend development practices and responsive UI design.",
       tools: ["HTML", "CSS", "JavaScript"],
       live: "https://hotelbooking-8d8y.vercel.app",
       github: "https://github.com/KianH00/hotelbooking",
-      type: "Web Application"
+      type: "Frontend Web Application",
+      contribution:
+        "Designed and developed the entire frontend, implemented the booking interface, responsive layouts, and interactive user experience."
     },
 
     {
       id: 2,
       title: "Student Expense Tracker",
       description:
-        "A simple expense tracking web application that helps students manage daily expenses and monitor their spending habits efficiently.",
-      tools: ["React", "Tailwind", "Vite"],
+        "A responsive expense tracking application that enables students to record, organize, and monitor daily expenses through a clean and user-friendly interface. Built using React with reusable components for efficient state management.",
+      tools: ["React", "Tailwind CSS", "Vite"],
       live: "https://studentexpense-beige.vercel.app/",
       github: "https://github.com/KianH00/studentexpense",
-      type: "Web Application"
+      type: "React Web Application",
+      contribution:
+        "Developed the complete frontend, implemented reusable React components, managed application state, and created a responsive user interface."
     },
 
     {
       id: 3,
       title: "Non-Contact Overloading Detection System",
       description:
-        "An undergraduate thesis project using Raspberry Pi and IoT sensors to monitor environmental conditions and send real-time mobile alerts. The system was designed to improve early warning and remote monitoring capabilities through hardware and software integration.",
-      tools: ["Raspberry Pi 4", "Python", "Firebase", "Expo", "Sensors"],
+        "An IoT-based undergraduate thesis project that monitors electrical load conditions using Raspberry Pi and sensors while providing real-time mobile notifications through Firebase. The system integrates hardware and software to improve remote monitoring and early overload detection.",
+      tools: ["Raspberry Pi 4", "Python", "Firebase", "Expo", "IoT Sensors"],
       documentation: "/Ncontact.pdf",
-      type: "Hardware and Mobile Application Thesis"
-}
+      type: "IoT & Mobile Application Thesis",
+      contribution:
+        "Collaborated in designing and developing the system by integrating Raspberry Pi, IoT sensors, Firebase cloud services, and the mobile application for real-time monitoring and alerts."
+    }
   ];
 
   const [selected, setSelected] = useState(projects[0]);
+  const [showVideos, setShowVideos] = useState(false);
 
   return (
     <section
@@ -52,7 +59,10 @@ function Projects() {
           {projects.map((project) => (
             <button
               key={project.id}
-              onClick={() => setSelected(project)}
+              onClick={() => {
+                setSelected(project);
+                setShowVideos(false);
+              }}
               className={`min-w-[180px] md:w-full text-left p-4 rounded-2xl border transition-all duration-300 whitespace-nowrap ${
                 selected.id === project.id
                   ? "bg-white text-black border-white shadow-xl"
@@ -63,17 +73,15 @@ function Projects() {
                 {project.title}
               </p>
 
-              {project.type && (
-                <span className="text-xs opacity-70">
-                  {project.type}
-                </span>
-              )}
+              <span className="text-xs opacity-70">
+                {project.type}
+              </span>
             </button>
           ))}
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="md:col-span-2 bg-slate-800 border border-slate-700 rounded-2xl p-6 md:p-8 min-h-[320px]">
+        <div className="md:col-span-2 bg-slate-800 border border-slate-700 rounded-2xl p-6 md:p-8">
 
           <AnimatePresence mode="wait">
             <motion.div
@@ -84,24 +92,25 @@ function Projects() {
               transition={{ duration: 0.3 }}
             >
 
-              {/* BADGE */}
-              {selected.type && (
-                <span className="inline-block text-xs px-3 py-1 rounded-full border border-slate-600 bg-slate-700 mb-4">
-                  {selected.type}
-                </span>
-              )}
+              <span className="inline-block text-xs px-3 py-1 rounded-full border border-slate-600 bg-slate-700 mb-4">
+                {selected.type}
+              </span>
 
-              {/* TITLE */}
               <h3 className="text-2xl font-semibold">
                 {selected.title}
               </h3>
 
-              {/* DESCRIPTION */}
               <p className="text-gray-300 mt-4 leading-relaxed">
                 {selected.description}
               </p>
 
-              {/* TOOLS */}
+              <div className="mt-6">
+                <h4 className="font-semibold mb-2">My Contribution</h4>
+                <p className="text-gray-300">
+                  {selected.contribution}
+                </p>
+              </div>
+
               <div className="flex flex-wrap gap-2 mt-6">
                 {selected.tools.map((tool, i) => (
                   <span
@@ -113,68 +122,81 @@ function Projects() {
                 ))}
               </div>
 
-              {/* BUTTONS */}
-              <div className="flex flex-col sm:flex-row gap-3 mt-8">
+              <div className="flex flex-wrap gap-3 mt-8">
 
-                {/* PROJECT 3 SPECIAL */}
                 {selected.id === 3 ? (
                   <>
-                    <a
-                      href={selected.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-5 py-2.5 bg-white text-black rounded-xl hover:opacity-80 transition text-center font-medium"
+                    <button
+                      onClick={() => setShowVideos(!showVideos)}
+                      className="px-5 py-2.5 bg-white text-black rounded-xl hover:opacity-80 transition"
                     >
-                      Show
-                    </a>
+                      {showVideos ? "Hide Demo Videos" : "Show Demo Videos"}
+                    </button>
 
                     <a
                       href={selected.documentation}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-5 py-2.5 border border-slate-600 rounded-xl hover:bg-slate-700 transition text-center"
+                      className="px-5 py-2.5 border border-slate-600 rounded-xl hover:bg-slate-700 transition"
                     >
                       Documentation
+                    </a>
+                  </>
+                ) : (
+                  <>
+                    <a
+                      href={selected.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-5 py-2.5 bg-white text-black rounded-xl hover:opacity-80 transition"
+                    >
+                      Live Demo
                     </a>
 
                     <a
                       href={selected.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-5 py-2.5 border border-slate-600 rounded-xl hover:bg-slate-700 transition text-center"
+                      className="px-5 py-2.5 border border-slate-600 rounded-xl hover:bg-slate-700 transition"
                     >
                       GitHub
                     </a>
                   </>
-                ) : (
-                  <>
-                    {/* LIVE DEMO */}
-                    {selected.live && selected.live !== "#" && (
-                      <a
-                        href={selected.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-5 py-2.5 bg-white text-black rounded-xl hover:opacity-80 transition text-center font-medium"
-                      >
-                        Live Demo
-                      </a>
-                    )}
-
-                    {/* GITHUB */}
-                    {selected.github && (
-                      <a
-                        href={selected.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-5 py-2.5 border border-slate-600 rounded-xl hover:bg-slate-700 transition text-center"
-                      >
-                        GitHub
-                      </a>
-                    )}
-                  </>
                 )}
 
               </div>
+
+              {selected.id === 3 && showVideos && (
+                <div className="mt-8 space-y-8">
+
+                  <div>
+                    <h4 className="font-semibold mb-3">
+                      Mobile Application Demo
+                    </h4>
+
+                    <video
+                      controls
+                      className="w-full rounded-xl border border-slate-700"
+                    >
+                      <source src="/demo1.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold mb-3">
+                      Hardware Demonstration
+                    </h4>
+
+                    <video
+                      controls
+                      className="w-full rounded-xl border border-slate-700"
+                    >
+                      <source src="/demo2.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+
+                </div>
+              )}
 
             </motion.div>
           </AnimatePresence>

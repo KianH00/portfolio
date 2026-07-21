@@ -14,8 +14,10 @@ function About() {
       <h2 className="text-3xl font-bold mb-6">About Me</h2>
 
       <p className="text-gray-600 leading-relaxed">
-        I'm a frontend developer focused on building responsive, clean, and user-friendly web applications using modern web technologies.
-        I enjoy turning ideas into functional and visually appealing interfaces.
+        I am a recent Computer Science graduate passionate about developing responsive web applications
+        using React and JavaScript. Through academic and personal projects, I have built web applications, 
+        implemented REST APIs, and collaborated using Git. I enjoy solving problems, writing clean code, and 
+        continuously learning modern development practices.
       </p>
 
       <p className="mt-4 text-gray-600 leading-relaxed">
