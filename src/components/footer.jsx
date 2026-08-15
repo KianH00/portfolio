@@ -10,7 +10,7 @@ export default function Footer() {
           </p>
 
           <p className="text-xs text-gray-500 mt-1">
-            Junior Frontend & Application Developer • Built with React & Tailwind CSS
+            Junior Frontend Developer • Built with React & Tailwind CSS
           </p>
         </div>
 
