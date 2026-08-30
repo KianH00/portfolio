@@ -65,7 +65,7 @@ export default function Contact() {
       {/* RESUME BUTTON */}
       <div className="mt-6 flex justify-center">
         <a
-          href="/Hellie-Resume-Tech.pdf"
+          href="/KHellie-Tech.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="px-5 py-2.5 border border-slate-600 rounded-xl hover:bg-slate-700 transition text-center text-white"
