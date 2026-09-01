@@ -35,7 +35,10 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section className="relative min-h-screen bg-slate-900 py-24">
+    <section 
+    id="projects"
+    className="relative min-h-screen bg-slate-900 py-24">
+      
       <div className="w-full max-w-6xl mx-auto px-4 md:px-6">
 
         {/* Section heading */}
